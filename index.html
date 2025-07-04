@@ -1,22 +1,160 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>BAPATLA DURGA</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Interactive Navigation Menu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      background-image: url('https://i.postimg.cc/vBM1Yqnq/IMG-20250623-WA0000.jpg'); /* Replace this with correct direct link */
-      background-size: cover;
-      font-family: Arial, sans-serif;
-      color: rgb(37, 19, 19);
-      text-align: center;
+    * {
       margin: 0;
-      padding: 50px;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      color: #1f2937;
+      line-height: 1.6;
+      padding-top: 70px;
+      background: linear-gradient(
+        to bottom right,
+        #60a5fa,  /* Blue */
+        #f97316,  /* Orange */
+        #6366f1,  /* Indigo */
+        #f472b6,  /* Pink */
+        #34d399   /* Greenish */
+      );
+      background-size: 400% 400%;
+      animation: gradientBG 20s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #fff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease;
+      z-index: 1000;
+    }
+
+    .navbar ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      padding: 15px 0;
+      gap: 40px;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: #1f2937;
+      font-weight: 700;
+      font-size: 16px;
+      position: relative;
+      padding: 5px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar a:hover {
+      color: #3b82f6;
+    }
+
+    .navbar a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #3b82f6;
+      transition: width 0.3s ease;
+    }
+
+    .navbar a:hover::after {
+      width: 100%;
+    }
+
+    .content {
+      max-width: 900px;
+      margin: 30px auto;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    h1, h2 {
+      color: #1e3a8a;
     }
   </style>
 </head>
 <body>
-  <h1>LUCKY CHARM AYYAPPA</h1>
-  <p>DURGA LOVES PUTHI</p>
+
+  <nav class="navbar" id="navbar">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Features</a></li>
+      <li><a href="#">Examples</a></li>
+      <li><a href="#">Benefits</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="content">
+    <h1>Interactive Navigation Menu</h1>
+    <p>
+      An interactive navigation menu enhances user experience by allowing smooth, intuitive access to different sections of a website. Unlike static menus, interactive menus respond dynamically to user actions such as hovering, clicking, or scrolling. This engagement improves usability and keeps users exploring your site.
+    </p>
+    <p>
+      Common effects include hover highlights, animated underlines, sticky positioning, and color transitions on scroll. Developers use HTML, CSS, and JavaScript to create these effects, giving websites a professional and modern appearance.
+    </p>
+
+    <h2>1. What is an Interactive Navigation Menu?</h2>
+    <p>
+      An interactive navigation menu is a dynamic UI component that responds to user interactions. It not only provides links to different pages or sections but also gives visual feedback — such as color changes, highlights, or animations — based on user behavior. These menus are often sticky (fixed), responsive, and adaptable to mobile devices.
+    </p>
+    <p>
+      Example features include:
+      <ul>
+        <li>Color or background changes when scrolled</li>
+        <li>Hover animations or underline effects</li>
+        <li>Dropdown submenus</li>
+        <li>Sliding or fading effects</li>
+      </ul>
+    </p>
+
+    <h2>2. Importance and Benefits</h2>
+    <p>
+      Interactive navigation plays a crucial role in website engagement and usability:
+      <ul>
+        <li><strong>User Experience:</strong> Smooth transitions and intuitive feedback make the site easier to use.</li>
+        <li><strong>Accessibility:</strong> Highlighting active links helps users know where they are.</li>
+        <li><strong>Modern Design:</strong> Adds a touch of professionalism and polish.</li>
+        <li><strong>SEO & Retention:</strong> Better navigation keeps users on the page longer.</li>
+      </ul>
+    </p>
+    <p>
+      As websites grow in complexity, interactive navigation becomes not just a design choice but a necessity. Whether you're building a portfolio, business site, or e-commerce platform, navigation can make or break user satisfaction.
+    </p>
+  </div>
+
+  <script>
+    // Rainbow scroll effect using HSL
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      const maxScroll = document.body.scrollHeight - window.innerHeight;
+      const scrollPercent = window.scrollY / maxScroll;
+      const hue = scrollPercent * 360; // 0 to 360 for full rainbow
+      navbar.style.backgroundColor = `hsl(${hue}, 80%, 50%)`;
+    });
+  </script>
+
 </body>
 </html>
-
