@@ -3,19 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Interactive Navigation Menu - Aerospace Style</title>
+  <title>Aerospace Navigation</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     html, body {
+      height: 100%;
       scroll-behavior: smooth;
       font-family: 'Orbitron', sans-serif;
-      background: black;
+      background-color: black;
       overflow-x: hidden;
     }
 
     section {
-      height: 100vh;
+      min-height: 100vh;
       padding: 60px 20px;
       display: flex;
       flex-direction: column;
@@ -24,26 +26,19 @@
       text-align: center;
       color: white;
       position: relative;
+      z-index: 2;
     }
 
     #main-section {
-      background: radial-gradient(circle at center, #1e293b, #000);
+      background: radial-gradient(circle at center, #1e293b, #000000);
     }
 
     #info-section {
-      background: radial-gradient(circle at center, #0f172a, #000);
+      background: radial-gradient(circle at center, #0f172a, #000000);
     }
 
-    h1 {
-      font-size: 2.8em;
-      margin-bottom: 20px;
-    }
-
-    p {
-      font-size: 1.1em;
-      max-width: 800px;
-      line-height: 1.8;
-      color: #cbd5e1;
+    #about-section {
+      background: radial-gradient(circle at center, #1a1a2e, #000000);
     }
 
     nav {
@@ -60,134 +55,102 @@
       text-decoration: none;
       font-weight: bold;
       padding: 8px 14px;
+      border-radius: 6px;
+      background-color: rgba(255, 255, 255, 0.05);
       border: 1px solid transparent;
       transition: all 0.3s;
-      border-radius: 6px;
     }
 
-    nav a:hover {
+    nav a:hover, nav a.active {
       border-color: white;
-      background: rgba(255,255,255,0.1);
+      background-color: rgba(255,255,255,0.2);
     }
 
-    /* Vehicles flying */
-    .vehicle {
+    .scroll-dot {
       position: absolute;
-      width: 60px;
-      height: 60px;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      opacity: 0.9;
-      z-index: 0;
-    }
-
-    .rocket {
-      background-image: url('https://img.icons8.com/color/96/rocket--v1.png');
-      top: 10%;
-      animation: flyRight 15s linear infinite;
-    }
-
-    .satellite {
-      background-image: url('https://img.icons8.com/color/96/satellite.png');
-      top: 40%;
-      animation: flyRight 25s linear infinite;
-    }
-
-    .ufo {
-      background-image: url('https://img.icons8.com/color/96/ufo.png');
-      top: 70%;
-      animation: flyRight 40s linear infinite;
-    }
-
-    @keyframes flyRight {
-      0% { left: -100px; transform: scale(0.8); }
-      100% { left: 110%; transform: scale(1); }
-    }
-
-    /* Tools Section Icons */
-    .tools-container {
-      display: flex;
-      gap: 40px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 40px;
-    }
-
-    .tool-icon {
-      width: 60px;
-      height: 60px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      opacity: 0.9;
-      animation: float 15s infinite alternate ease-in-out;
+      z-index: 1;
+      opacity: 0.7;
+      animation: sparkle 1s ease-out forwards;
     }
 
-    .html { background-image: url('https://img.icons8.com/color/96/html-5.png'); }
-    .css { background-image: url('https://img.icons8.com/color/96/css3.png'); }
-    .js { background-image: url('https://img.icons8.com/color/96/javascript.png'); }
-    .figma { background-image: url('https://img.icons8.com/color/96/figma--v1.png'); }
-    .react { background-image: url('https://img.icons8.com/color/96/react-native.png'); }
-
-    @keyframes float {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-      100% { transform: translateY(0); }
+    @keyframes sparkle {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(3); opacity: 0; }
     }
 
-    /* Scroll Down Hint */
-    .scroll-hint {
-      position: absolute;
-      bottom: 20px;
-      font-size: 1em;
-      color: #ccc;
-      animation: blink 1.5s infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
+    .particle-layer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
     }
   </style>
 </head>
 <body>
 
+  <div class="particle-layer" id="particleLayer"></div>
+
   <!-- Navigation -->
   <nav>
     <a href="#main-section">Home</a>
     <a href="#info-section">Tools</a>
-    <a href="#">About</a>
-    <a href="#">Contact</a>
+    <a href="#about-section">About</a>
   </nav>
 
-  <!-- Main Slide -->
+  <!-- Main Section -->
   <section id="main-section">
     <h1>Interactive Navigation Menu</h1>
-    <p>
-      An interactive navigation menu improves user experience by offering smooth, intuitive, and responsive access to website content. With animations, hover effects, and scroll feedback, it creates a modern and engaging interface.
-    </p>
-    <div class="vehicle rocket"></div>
-    <div class="vehicle satellite"></div>
-    <div class="vehicle ufo"></div>
-    <div class="scroll-hint">▼ Scroll Down ▼</div>
+    <p>Engage users with space-themed UI and smooth scroll effects.</p>
   </section>
 
   <!-- Tools Section -->
   <section id="info-section">
     <h1>Tools & Technologies</h1>
-    <p>
-      To build an interactive navigation system, modern web developers use tools like HTML, CSS, JavaScript, UI design software like Figma, and frameworks like React.
-    </p>
-    <div class="tools-container">
-      <div class="tool-icon html"></div>
-      <div class="tool-icon css"></div>
-      <div class="tool-icon js"></div>
-      <div class="tool-icon figma"></div>
-      <div class="tool-icon react"></div>
-    </div>
+    <p>HTML, CSS, JavaScript, React, Figma</p>
   </section>
+
+  <!-- About Section -->
+  <section id="about-section">
+    <h1>About Developer</h1>
+    <p><strong>Name:</strong> Yarrajeni Bharath Reddy</p>
+    <p><strong>Email:</strong> bharathreddyy@domain.com</p>
+  </section>
+
+  <!-- Scroll Particles Script -->
+  <script>
+    const layer = document.getElementById("particleLayer");
+
+    document.addEventListener('scroll', () => {
+      for (let i = 0; i < 10; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'scroll-dot';
+        dot.style.left = `${Math.random() * window.innerWidth}px`;
+        dot.style.top = `${window.scrollY + Math.random() * window.innerHeight}px`;
+        dot.style.backgroundColor = getRandomColor();
+        layer.appendChild(dot);
+        setTimeout(() => dot.remove(), 1000);
+      }
+    });
+
+    function getRandomColor() {
+      const colors = ['#ff6ec7', '#00ffff', '#ffdd57', '#39ff14', '#ff5733', '#a020f0'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+  </script>
 
 </body>
 </html>
